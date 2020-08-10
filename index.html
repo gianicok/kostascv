@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Kosta Gianicos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://js.cx/libs/animate.js"></script>
+</head>
+<body>
+
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Kosta Gianicos</h1>
+    <p>Engineer in Practice</p>
+  </div>
+</div>
+  
+<div id= "experience " class="container" style="padding-top: 50px;">
+  <h1>Experience</h1>
+  <hr>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+      <h3><img src="flabslogo.jpg" class="img-thumbnail" width="70" height="70">  FyeLabs</h3>
+      <p></p>
+      <p>Used Python/C++ to implement an OpenCV driven point plotting algorithm that converts real life (x,y,z) points from a runway to image (u,v) points on an image and vice versa</p>
+      <p>Used the Vuetify framework (HTML/SASS and CSS/JS) to create front end views for an internal dashboard project</p>
+      <p>Used HTML and JS with Google Web Serial API to help develop a web platform for the iOLab wireless lab system. This was a project for a University that allows students to perform at home physics labs due to COVID-19</p>
+      <p>Used Go with an Elastic Search database to build several APIs and back end services for the internal dashboard project. Used Swagger.io and Lucid Chart to create documentation and an entity relationship diagram to make front end to back end integration easier</p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
+      <h3><img src="englogo.jpg" class="img-thumbnail" width="70" height="70">  Research Assistant</h3>
+      <p></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--the bottom with the bouncy mac eng logo-->
+
+<div id="field">
+  <img src="maclogo.jpg" width="40" height="40" id="ball">
+</div>
+
+<script>
+  function makeEaseOut(timing) {
+    return function(timeFraction) {
+      return 1 - timing(1 - timeFraction);
+    }
+  }
+  function bounce(timeFraction) {
+    for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
+      if (timeFraction >= (7 - 4 * a) / 11) {
+        return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+      }
+    }
+  }
+  function quad(timeFraction) {
+    return Math.pow(timeFraction, 2);
+  }
+
+  ball.onclick = function() {
+    let height = field.clientHeight - ball.clientHeight;
+    let width = 100;
+    animate({
+      duration: 2000,
+      timing: makeEaseOut(bounce),
+      draw: function(progress) {
+        ball.style.top = height * progress + 'px'
+      }
+    });
+    animate({
+      duration: 2000,
+      timing: makeEaseOut(quad),
+      draw: function(progress) {
+        ball.style.left = width * progress + "px"
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
